@@ -10,6 +10,18 @@ export function gameSave(gameObj) {
     console.log(`The game is saved with this key: ${key}`);
 }
 
+export function getGames() {
+    const games = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith("game_")) {
+            const gameObj = JSON.parse(localStorage.getItem(key));
+            games.push(gameObj);
+        }
+    }
+    return games;
+}
+
 const gameDetails = {
     title: "Concordia",
     designer: "Mac Gerdts",
@@ -28,3 +40,5 @@ const myGame = new game(gameDetails);
 console.log(myGame);
 
 gameSave(myGame);
+
+console.log("Saved games: ", getGames());
