@@ -3,10 +3,11 @@ import game from "./models/game.mjs";
 
 export function gameSave(gameObj) {
     if (!gameObj || !gameObj.title) {
-        console.error("");
+        console.error("Provide a valid title before saving.");
         return;
     }
     const key = `game_${gameObj.title.replace(/\s/g, '_')}`;
+    localStorage.setItem(key, JSON.stringify(gameObj));
     console.log(`The game is saved with this key: ${key}`);
 }
 
@@ -20,6 +21,11 @@ export function getGames() {
         }
     }
     return games;
+}
+
+export function getGamesJSON() {
+    const games = getGames();
+    return JSON.stringify(games);
 }
 
 const gameDetails = {
@@ -42,3 +48,4 @@ console.log(myGame);
 gameSave(myGame);
 
 console.log("Saved games: ", getGames());
+console.log("JSON format: ", getGamesJSON());
