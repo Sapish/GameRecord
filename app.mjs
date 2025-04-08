@@ -1,6 +1,15 @@
 
 import game from "./models/game.mjs";
 
+export function gameSave(gameObj) {
+    if (!gameObj || !gameObj.title) {
+        console.error("");
+        return;
+    }
+    const key = `game_${gameObj.title.replace(/\s/g, '_')}`;
+    console.log(`The game is saved with this key: ${key}`);
+}
+
 const gameDetails = {
     title: "Concordia",
     designer: "Mac Gerdts",
@@ -17,3 +26,5 @@ const gameDetails = {
 
 const myGame = new game(gameDetails);
 console.log(myGame);
+
+gameSave(myGame);
