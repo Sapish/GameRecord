@@ -71,36 +71,51 @@ const myGame = new game(gameDetails);
 console.log(myGame);
 gameSave(myGame);
 
-const gamesJSON = `[
-    {
-        "title": "Concordia",
-        "designer": "Mac Gerdts",
-        "artist": "Marina Fahrenbach",
-        "publisher": "PD-Verlag",
-        "year": 2013,
-        "players": "2-5",
-        "time": "90 mins",
-        "difficulty": "Medium",
-        "url": "https://boardgamegeek.com/boardgame/124361/concordia",
-        "playCount": 44,
-        "personalRating": 9
-    },
-    {
-        "title": "Catan",
-        "designer": "Klaus Teuber",
-        "artist": "Franz Vohwinkel",
-        "publisher": "Kosmos",
-        "year": 1995,
-        "players": "3-4",
-        "time": "60-120 mins",
-        "difficulty": "Easy",
-        "url": "https://boardgamegeek.com/boardgame/13/catan",
-        "playCount": 80,
-        "personalRating": 8
-    }
-]`;
-
-importGames(gamesJSON);
-
 console.log("Saved games: ", getGames());
 console.log("JSON format: ", getGamesJSON());
+
+let games = getGames();
+console.log("Loaded games from localStorage: ", games);
+
+const fileInput = document.getElementById("file-input");
+const fileDisplay = document.getElementById("file-content");
+const messageDisplay = document.getElementById("message");
+
+fileInput.addEventListener("change", fileSelection);
+
+function fileSelection(event) {
+    const file = event.target.files[0];
+
+    fileDisplay.textContent = "";
+    messageDisplay.textContent = "";
+
+    if (!file) {
+        showMessage("Please select a file.", "Error");
+        return;
+    }
+
+    if (!file.type.match("application/json") && !file.type.match("text.*")) {
+        showMessage("Wrong file type. Needs to be JSON file.", "Error");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+        const fileData = reader.result;
+        fileDisplay.textContent = fileData;
+        try {
+            importGames(fileData);
+            games = getGames();
+            console.log("Games after file import: ", games);
+            showMessage("Successfully imported file.", "success");
+        } catch (err) {
+            showMessage("Error importing games: " + err, "Error");
+        }
+    };
+    reader.readAsText(file);
+}
+
+function showMessage(message, type) {
+    messageDisplay.textContent = message;
+    messageDisplay.style.color = type === "Error" ? "red" : "green";
+}
