@@ -145,17 +145,27 @@ function displayGames() {
         displayExtraInfo.textContent = "Designer: " + game.designer + " | Year: " + game.year;
         gameDetailsCard.appendChild(displayExtraInfo);
 
-        const inputRange = document.createElement("input");
-        inputRange.type = "range";
-        inputRange.min = "0";
-        inputRange.max = "10";
+        const ratingNumber = document.createElement("label");
+        ratingNumber.textContent = "Rating";
+        gameDetailsCard.appendChild(ratingNumber);
 
-        inputRange.value = game.personalRating || 0;
-        gameDetailsCard.appendChild(inputRange);
+        const ratingInput = document.createElement("input");
+        ratingInput.type = "range";
+        ratingInput.min = "0";
+        ratingInput.max = "10";
+        ratingInput.value = game.personalRating || 0;
+        gameDetailsCard.appendChild(ratingInput);
 
-        const updateButton = document.createElement("button");
-        updateButton.textContent = "Rating Update";
-        gameDetailsCard.appendChild(updateButton);
+        const ratingButton = document.createElement("button");
+        ratingButton.textContent = "Update rating";
+        gameDetailsCard.appendChild(ratingButton);
+
+        ratingButton.addEventListener("click", function() {
+            const newRating = parseInt(ratingInput.value);
+            game.personalRating = newRating;
+            gameSave(game);
+            showMessage(`Current rating for ${game.title} changed to ${newRating}.`, "success");
+        });
 
         gameBox.appendChild(gameDetailsCard);
         
