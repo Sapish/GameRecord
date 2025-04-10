@@ -119,3 +119,46 @@ function showMessage(message, type) {
     messageDisplay.textContent = message;
     messageDisplay.style.color = type === "Error" ? "red" : "green";
 }
+
+function displayGames() {
+    const games = getGames();
+
+    let gameBox = document.getElementById("game-list");
+
+    if (!gameBox) {
+        gameBox = document.createElement("div");
+        gameBox.id = "game-list";
+        document.body.appendChild(gameBox);
+    }
+
+    gameBox.innerHTML = "";
+
+    games.forEach((game) => {
+        const gameDetailsCard = document.createElement("div");
+        gameDetailsCard.className = "game-card";
+
+        const displayGameTitle = document.createElement("h3");
+        displayGameTitle.textContent = game.title;
+        gameDetailsCard.appendChild(displayGameTitle);
+
+        const displayExtraInfo = document.createElement("p");
+        displayExtraInfo.textContent = "Designer: " + game.designer + " | Year: " + game.year;
+        gameDetailsCard.appendChild(displayExtraInfo);
+
+        const inputRange = document.createElement("input");
+        inputRange.type = "range";
+        inputRange.min = "0";
+        inputRange.max = "10";
+
+        inputRange.value = game.personalRating || 0;
+        gameDetailsCard.appendChild(inputRange);
+
+        const updateButton = document.createElement("button");
+        updateButton.textContent = "Rating Update";
+        gameDetailsCard.appendChild(updateButton);
+
+        gameBox.appendChild(gameDetailsCard);
+        
+    });
+}
+displayGames();
