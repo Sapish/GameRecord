@@ -33,3 +33,4 @@ Added code so that the buttons would work. The user can change the rating of the
 Upon writing this i realised i had written "Player counter" and "Update player count" instead of "Play count". Fixed now.
 
 Step 7:
+Added a fill out form to the Ui, so that users can add more games. Only front end done, backend will be done in step 8.
