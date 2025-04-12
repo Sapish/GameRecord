@@ -167,8 +167,28 @@ function displayGames() {
             showMessage(`Current rating for ${game.title} changed to ${newRating}.`, "success");
         });
 
-        gameBox.appendChild(gameDetailsCard);
-        
+        const playerCounter = document.createElement("label");
+        playerCounter.textContent = "Player counter: ";
+        gameDetailsCard.appendChild(playerCounter);
+
+        const playerCounterInput = document.createElement("input");
+        playerCounterInput.type = "number";
+        playerCounterInput.value = game.playCount || 0;
+        gameDetailsCard.appendChild(playerCounterInput);
+
+        const playerCounterButton = document.createElement("button");
+        playerCounterButton.textContent = "Update player count";
+        gameDetailsCard.appendChild(playerCounterButton);
+
+        playerCounterButton.addEventListener("click", function() {
+            const newPlayerCount = parseInt(playerCounterInput.value);
+            game.playCount = newPlayerCount;
+            gameSave(game);
+            showMessage(`Current player count for ${game.title} changed to ${newPlayerCount}.`, "success");
+                
     });
+
+    gameBox.appendChild(gameDetailsCard);
+});
 }
 displayGames();
