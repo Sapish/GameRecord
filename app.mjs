@@ -165,24 +165,24 @@ function displayGames() {
             showMessage(`Current rating for ${game.title} changed to ${newRating}.`, "success");
         });
 
-        const playerCounter = document.createElement("label");
-        playerCounter.textContent = "Player counter: ";
-        gameDetailsCard.appendChild(playerCounter);
+        const playCountAmount = document.createElement("label");
+        playCountAmount.textContent = "Play count: ";
+        gameDetailsCard.appendChild(playCountAmount);
 
-        const playerCounterInput = document.createElement("input");
-        playerCounterInput.type = "number";
-        playerCounterInput.value = game.playCount || 0;
-        gameDetailsCard.appendChild(playerCounterInput);
+        const playCountInput = document.createElement("input");
+        playCountInput.type = "number";
+        playCountInput.value = game.playCount || 0;
+        gameDetailsCard.appendChild(playCountInput);
 
-        const playerCounterButton = document.createElement("button");
-        playerCounterButton.textContent = "Update player count";
-        gameDetailsCard.appendChild(playerCounterButton);
+        const playCountButton = document.createElement("button");
+        playCountButton.textContent = "Update play count";
+        gameDetailsCard.appendChild(playCountButton);
 
-        playerCounterButton.addEventListener("click", function() {
-            const newPlayerCount = parseInt(playerCounterInput.value);
-            game.playCount = newPlayerCount;
+        playCountButton.addEventListener("click", function() {
+            const newPlayCount = parseInt(playCountInput.value);
+            game.playCount = newPlayCount;
             gameSave(game);
-            showMessage(`Current player count for ${game.title} changed to ${newPlayerCount}.`, "success");
+            showMessage(`Current play count for ${game.title} changed to ${newPlayCount}.`, "success");
                 
     });
 
