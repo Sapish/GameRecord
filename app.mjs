@@ -1,4 +1,3 @@
-
 import game from "./models/game.mjs";
 
 export function gameSave(gameObj) {
@@ -50,7 +49,6 @@ export function importGames(jsonData) {
         gameSave(newGame);
     });
     console.log(`${gamesArray.length} imported and saved the games to localStorage`);
-
 }
 
 const gameDetails = {
