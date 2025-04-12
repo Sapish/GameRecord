@@ -11,6 +11,47 @@
     <input type="file" id="file-input" accept=".json" />
     <div id="message"></div>
     <pre id="file-content"></pre>
+
+    <section id="gameInputSection">
+        <h2>Add Game</h2>
+        <form id="addGame">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required>
+          <br>
+          <label for="designer">Designer:</label>
+          <input type="text" id="designer" name="designer">
+          <br>
+          <label for="artist">Artist:</label>
+          <input type="text" id="artist" name="artist">
+          <br>
+          <label for="publisher">Publisher:</label>
+          <input type="text" id="publisher" name="publisher">
+          <br>
+          <label for="year">Year:</label>
+          <input type="number" id="year" name="year">
+          <br>
+          <label for="players">Players:</label>
+          <input type="text" id="players" name="players">
+          <br>
+          <label for="time">Time:</label>
+          <input type="text" id="time" name="time">
+          <br>
+          <label for="difficulty">Difficulty:</label>
+          <input type="text" id="difficulty" name="difficulty">
+          <br>
+          <label for="url">URL:</label>
+          <input type="url" id="url" name="url">
+          <br>
+          <label for="playCount">Play Count:</label>
+          <input type="number" id="playCount" name="playCount">
+          <br>
+          <label for="personalRating">Personal Rating:</label>
+          <input type="range" id="personalRating" name="personalRating" min="0" max="10">
+          <br>
+          <button type="submit">Add Game</button>
+        </form>
+      </section>
+
     <script src="app.mjs" type="module"></script>
 </body>
 </html>
