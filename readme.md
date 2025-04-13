@@ -52,3 +52,4 @@ Shouldn't be hard to add, but i need a break.
 
 Extra steps:
 Now the Ui also shows players, time, difficulty.
+Added some simple css styling to the Ui, really enjoyed using w3schools.com to get a good idea of simple stuff to change.

@@ -1,1 +1,47 @@
- 
+body {
+    background-color:darkseagreen;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #292525;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: #292525;
+}
+
+h2 {
+    text-align: center;
+}
+
+#file-input {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.game-card {
+    background-color: rgb(138, 161, 138);
+    border: 2px solid #292525;
+    text-align: center;
+    padding: 10px;
+    margin: 15px auto;
+    max-width: 790px;
+}
+
+button {
+    background-color: rgba(55, 168, 61, 0.301);
+    color: #292525;
+    font-weight: bold;
+}
+
+section {
+    background-color: rgb(138, 161, 138);
+    border: 2px solid #292525;
+    padding: 10px;
+    margin: 15px auto;
+    max-width: 790px;
+}
