@@ -39,3 +39,7 @@ Step 8:
 Added back-end code so that the fill out form actually works.
 Users can now add games with (title, designer, artist, publisher, year, players, time, difficulty, url, playcount and personal rating.)
 The users will also get feedback if there is something they are missing, or if the game(s) were added successfully.
+
+Step 9:
+Added a delete button behind all games, so now users can delete games from the Ui.
+Im using the same logic as i did with saving, using keys. Once the delete button is clicked, the Ui will refresh and the game will be deleted from localStorage.

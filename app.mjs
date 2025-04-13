@@ -186,6 +186,18 @@ function displayGames() {
                 
     });
 
+    const deleteGameButton = document.createElement("button");
+    deleteGameButton.textContent = "Delete Game";
+    gameDetailsCard.appendChild(deleteGameButton);
+
+    deleteGameButton.addEventListener("click", function() {
+        const key = `game_${game.title.replace(/\s/g, '_')}`;
+        localStorage.removeItem(key);
+        showMessage(`Game ${game.title} deleted!`, "success");
+
+        displayGames();
+    });
+
     gameBox.appendChild(gameDetailsCard);
 });
 }
