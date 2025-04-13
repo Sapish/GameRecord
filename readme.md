@@ -34,3 +34,8 @@ Upon writing this i realised i had written "Player counter" and "Update player c
 
 Step 7:
 Added a fill out form to the Ui, so that users can add more games. Only front end done, backend will be done in step 8.
+
+Step 8:
+Added back-end code so that the fill out form actually works.
+Users can now add games with (title, designer, artist, publisher, year, players, time, difficulty, url, playcount and personal rating.)
+The users will also get feedback if there is something they are missing, or if the game(s) were added successfully.

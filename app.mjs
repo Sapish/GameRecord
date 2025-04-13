@@ -190,3 +190,31 @@ function displayGames() {
 });
 }
 displayGames();
+
+const addGameForm = document.getElementById("addGame");
+
+if (addGameForm) {
+    addGameForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const newGame = new game({
+            title: event.target.title.value,
+            designer: event.target.designer.value,
+            artist: event.target.artist.value,
+            publisher: event.target.publisher.value,
+            year: parseInt(event.target.year.value) || new Date().getFullYear(),
+            players: event.target.players.value,
+            time: event.target.time.value,
+            difficulty: event.target.difficulty.value,
+            url: event.target.url.value,
+            playCount: parseInt(event.target.playCount.value) || 0,
+            personalRating: parseInt(event.target.personalRating.value) || 0,
+        });
+
+    gameSave(newGame);
+    displayGames();
+    showMessage(`Game "${newGame.title}" added successfully!`, "success");
+
+    addGameForm.reset();
+    });
+}
