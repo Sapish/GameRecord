@@ -140,7 +140,12 @@ function displayGames(sortedGames) {
         gameDetailsCard.appendChild(displayGameTitle);
 
         const displayExtraInfo = document.createElement("p");
-        displayExtraInfo.textContent = "Designer: " + game.designer + " | Year: " + game.year;
+        displayExtraInfo.textContent = 
+        "Designer: " + game.designer + " | " + 
+        "Year: " + game.year + " | " +
+        "Players: " + game.players + " | " +
+        "Time: " + game.time + " | " +
+        "Difficulty: " + game.difficulty;
         gameDetailsCard.appendChild(displayExtraInfo);
 
         const ratingNumber = document.createElement("label");

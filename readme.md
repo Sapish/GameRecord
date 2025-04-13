@@ -49,3 +49,6 @@ Added backend and frontend code that allows the user to sort the games based on 
 Once you select your sort by option and hit the sort games button, the most relevant games will go to the top.
 Realised now that im not actually showing some of the info in the example gameRecordUi.png, which i can see in the f12 console.
 Shouldn't be hard to add, but i need a break.
+
+Extra steps:
+Now the Ui also shows players, time, difficulty.
