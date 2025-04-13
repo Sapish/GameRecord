@@ -118,8 +118,8 @@ function showMessage(message, type) {
     messageDisplay.style.color = type === "Error" ? "red" : "green";
 }
 
-function displayGames() {
-    const games = getGames();
+function displayGames(sortedGames) {
+    const gamesToDisplay = sortedGames || getGames();
 
     let gameBox = document.getElementById("game-list");
 
@@ -131,7 +131,7 @@ function displayGames() {
 
     gameBox.innerHTML = "";
 
-    games.forEach((game) => {
+    gamesToDisplay.forEach((game) => {
         const gameDetailsCard = document.createElement("div");
         gameDetailsCard.className = "game-card";
 
@@ -194,7 +194,6 @@ function displayGames() {
         const key = `game_${game.title.replace(/\s/g, '_')}`;
         localStorage.removeItem(key);
         showMessage(`Game ${game.title} deleted!`, "success");
-
         displayGames();
     });
 
@@ -229,4 +228,30 @@ if (addGameForm) {
 
     addGameForm.reset();
     });
+
+    const sortButton = document.getElementById("sortButton");
+
+    if (sortButton) {
+        sortButton.addEventListener("click", () => {
+            const sortBy = document.getElementById("sortBy").value;
+            let gamesToSort = getGames();
+
+            if (sortBy === "players") {
+                gamesToSort.sort((a, b) => {
+                    const aPlayers = parseInt(a.players) || 0;
+                    const bPlayers = parseInt(b.players) || 0;
+                    return aPlayers - bPlayers;
+                });
+            } else if (sortBy === "personalRating") {
+                gamesToSort.sort((a, b) => b.personalRating - a.personalRating);
+            } else if (sortBy === "playCount") {
+                gamesToSort.sort((a, b) => b.playCount - a.playCount);
+            } else if (sortBy === "difficulty") {
+                gamesToSort.sort((a, b) => a.difficulty.localeCompare(b.difficulty));
+            }
+            displayGames(gamesToSort);
+            showMessage(`Games sorted by ${sortBy}.`, "success");
+        });
+    }
+
 }

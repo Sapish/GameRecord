@@ -43,3 +43,9 @@ The users will also get feedback if there is something they are missing, or if t
 Step 9:
 Added a delete button behind all games, so now users can delete games from the Ui.
 Im using the same logic as i did with saving, using keys. Once the delete button is clicked, the Ui will refresh and the game will be deleted from localStorage.
+
+Step 10:
+Added backend and frontend code that allows the user to sort the games based on (playercount, play count, rating and difficulty).
+Once you select your sort by option and hit the sort games button, the most relevant games will go to the top.
+Realised now that im not actually showing some of the info in the example gameRecordUi.png, which i can see in the f12 console.
+Shouldn't be hard to add, but i need a break.
